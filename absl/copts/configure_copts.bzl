@@ -23,10 +23,10 @@ load(
 
 ABSL_DEFAULT_COPTS = select({
     "//absl:msvc_compiler": ABSL_MSVC_FLAGS,
-    "//absl:clang-cl_compiler": ABSL_CLANG_CL_FLAGS,
-    "//absl:clang_compiler": ABSL_LLVM_FLAGS,
-    "//absl:gcc_compiler": ABSL_GCC_FLAGS,
-    "//conditions:default": ABSL_GCC_FLAGS,
+    "//absl:clang-cl_compiler": ABSL_CLANG_CL_FLAGS + ["-pthread"],
+    "//absl:clang_compiler": ABSL_LLVM_FLAGS + ["-pthread"],
+    "//absl:gcc_compiler": ABSL_GCC_FLAGS + ["-pthread"],
+    "//conditions:default": ABSL_GCC_FLAGS + ["-pthread"],
 })
 
 ABSL_TEST_COPTS = select({
@@ -39,7 +39,7 @@ ABSL_TEST_COPTS = select({
 
 ABSL_DEFAULT_LINKOPTS = select({
     "//absl:msvc_compiler": ABSL_MSVC_LINKOPTS,
-    "//conditions:default": [],
+    "//conditions:default": ["-lpthread"],
 })
 
 # ABSL_RANDOM_RANDEN_COPTS blaze copts flags which are required by each

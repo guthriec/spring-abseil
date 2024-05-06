@@ -447,8 +447,8 @@ cc_library(
         "cord.h",
         "cord_buffer.h",
     ],
-    copts = ABSL_DEFAULT_COPTS,
-    linkopts = ABSL_DEFAULT_LINKOPTS,
+    copts = ABSL_DEFAULT_COPTS + ["-pthread"],
+    linkopts = ABSL_DEFAULT_LINKOPTS + ["-lpthread"],
     deps = [
         ":cord_internal",
         ":cordz_functions",

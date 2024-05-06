@@ -54,6 +54,7 @@ ABSL_GCC_FLAGS = [
     "-Wvla",
     "-Wwrite-strings",
     "-DNOMINMAX",
+    "-pthread",
 ]
 
 ABSL_GCC_TEST_FLAGS = [
@@ -71,6 +72,7 @@ ABSL_GCC_TEST_FLAGS = [
     "-Wvla",
     "-Wwrite-strings",
     "-DNOMINMAX",
+    "-pthread",
     "-Wno-deprecated-declarations",
     "-Wno-missing-declarations",
     "-Wno-self-move",
@@ -116,6 +118,7 @@ ABSL_LLVM_FLAGS = [
     "-Wno-implicit-int-float-conversion",
     "-Wno-unknown-warning-option",
     "-DNOMINMAX",
+    "-pthread",
 ]
 
 ABSL_LLVM_TEST_FLAGS = [
@@ -152,6 +155,7 @@ ABSL_LLVM_TEST_FLAGS = [
     "-Wno-implicit-int-float-conversion",
     "-Wno-unknown-warning-option",
     "-DNOMINMAX",
+    "-pthread",
     "-Wno-deprecated-declarations",
     "-Wno-implicit-int-conversion",
     "-Wno-missing-prototypes",

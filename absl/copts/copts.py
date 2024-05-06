@@ -28,6 +28,7 @@ ABSL_GCC_FLAGS = [
     "-Wwrite-strings",
     # Don't define min and max macros (Build on Windows using gcc)
     "-DNOMINMAX",
+    "-pthread",
 ]
 
 ABSL_GCC_TEST_ADDITIONAL_FLAGS = [
@@ -81,6 +82,7 @@ ABSL_LLVM_FLAGS = [
     "-Wno-unknown-warning-option",
     # Don't define min and max macros (Build on Windows using clang)
     "-DNOMINMAX",
+    "-pthread",
 ]
 
 ABSL_LLVM_TEST_ADDITIONAL_FLAGS = [

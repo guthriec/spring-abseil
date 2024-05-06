@@ -53,6 +53,9 @@ cc_library(
         "include/cctz/time_zone.h",
         "include/cctz/zone_info_source.h",
     ],
+    copts = [
+        "-pthread",
+    ],
     # OS X and iOS no longer use `linkopts = ["-framework CoreFoundation"]`
     # as (1) bazel adds it automatically, and (2) it caused problems when
     # cross-compiling for Android.
@@ -151,7 +154,7 @@ cc_test(
 filegroup(
     name = "zoneinfo",
     srcs = glob(["testdata/zoneinfo/**"]),
-    visibility = ["//absl/time:__subpackages__"],
+    visibility = ["//visibility:public"],
 )
 
 ### examples

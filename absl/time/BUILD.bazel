@@ -54,6 +54,7 @@ cc_library(
         "//absl/time/internal/cctz:time_zone",
         "//absl/types:optional",
     ],
+    data = ["//absl/time/internal/cctz:zoneinfo"],
 )
 
 cc_library(

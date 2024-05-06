@@ -41,6 +41,7 @@
 #include <cstring>
 #include <fstream>
 #include <functional>
+#include <iostream>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -653,7 +654,7 @@ std::unique_ptr<ZoneInfoSource> FileZoneInfoSource::Open(
   // Map the time-zone name to a path name.
   std::string path;
   if (pos == name.size() || name[pos] != '/') {
-    const char* tzdir = "/usr/share/zoneinfo";
+    const char* tzdir = "zoneinfo/external/com_google_absl/absl/time/internal/cctz/testdata/zoneinfo";
     char* tzdir_env = nullptr;
 #if defined(_MSC_VER)
     _dupenv_s(&tzdir_env, nullptr, "TZDIR");
@@ -661,6 +662,7 @@ std::unique_ptr<ZoneInfoSource> FileZoneInfoSource::Open(
     tzdir_env = std::getenv("TZDIR");
 #endif
     if (tzdir_env && *tzdir_env) tzdir = tzdir_env;
+    std::cerr << "TZDIR: " << tzdir << std::endl;
     path += tzdir;
     path += '/';
 #if defined(_MSC_VER)
@@ -668,6 +670,7 @@ std::unique_ptr<ZoneInfoSource> FileZoneInfoSource::Open(
 #endif
   }
   path.append(name, pos, std::string::npos);
+  std::cerr << "Path: " << path << std::endl;
 
   // Open the zoneinfo file.
   auto fp = FOpen(path.c_str(), "rb");
