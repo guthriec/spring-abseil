@@ -674,7 +674,10 @@ std::unique_ptr<ZoneInfoSource> FileZoneInfoSource::Open(
 
   // Open the zoneinfo file.
   auto fp = FOpen(path.c_str(), "rb");
-  if (fp == nullptr) return nullptr;
+  if (fp == nullptr) {
+    std::cerr << "Could not open TZDIR";
+    return nullptr;
+  }
   return std::unique_ptr<ZoneInfoSource>(new FileZoneInfoSource(std::move(fp)));
 }
 
